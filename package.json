@@ -1,0 +1,15 @@
+{
+  "name": "arena-online",
+  "version": "1.0.0",
+  "description": "A top down pixel art 1v1 multiplayer online arena based fighting game.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tobsta/arena-online.git"
+  },
+  "author": "Tobsta",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Tobsta/arena-online/issues"
+  },
+  "homepage": "https://github.com/Tobsta/arena-online#readme"
+}
