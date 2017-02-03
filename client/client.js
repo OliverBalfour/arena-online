@@ -62,7 +62,7 @@ Engine.client.movePlayer = function(){
 		Engine.client.player.pos.y += 2;
 	}
 
-	//Engine.client.player.handleTileCollision();
+	Engine.client.player.handleTileCollision();
 	
 	if(Engine.client.player.pos.x < 0) Engine.client.player.pos.x = 0;
 	if(Engine.client.player.pos.x > Engine.render.map.data.width * Engine.render.map.data.twidth - 1) Engine.client.player.pos.x = Engine.render.map.data.width * Engine.render.map.data.twidth - 1;

@@ -9,41 +9,29 @@ Engine.entity.Empty = function(){
 	this.pos = {x: 0, y: 0, r: 0};
 	this.vel = {x: 0, y: 0, r: 0};
 	this.acc = {x: 0, y: 0, r: 0};
-	this.size = {w: 32, l: 32, h: 64};
+	this.size = {w: 32, l: 16, h: 64};
 	this.armour = {
 		helmet: 0,
 		chestplate: 0,
-		pants: 0,
-		boots: 0,
-		shield: 0,
-		gauntlets: 0
+		shield: 0
 	};
 	this.hand = 0;
-	this.inventory = [
-		[0,0,0,0,0,0],
-		[0,0,0,0,0,0],
-		[0,0,0,0,0,0],
-		[0,0,0,0,0,0],
-		[0,0,0,0,0,0],
-		[0,0,0,0,0,0],
-		[0,0,0,0,0,0]
-	];
-	this.spells = [0,0,0,0,0,0];
+	this.inventory = [];
 	this.stats = {
-		maxHealth: 1,
-		health: 1,
+		maxHealth: 0,
+		health: 0,
 		maxMana: 0,
 		mana: 0,
-		xpLevel: 1,
+		xpLevel: 0,
 		xp: 0,
-		speed: 1,
-		attackSpeed: 1
+		speed: 0,
+		attackSpeed: 0
 	};
 	this.drops = [];
 	this.currency = 0;
 	this.buffs = [];
 	this.direction = 0;
-	this.damage = 10;
+	this.damage = 0;
 	this.cooldown = 0;
 	Engine.entity.entities.push(this);
 }
@@ -53,26 +41,23 @@ Engine.entity.Empty.prototype.draw = Engine.entity.block;
 
 //tile collision detection, where side is between 0 and 4, 0 for up, 3 for left (clockwise)
 Engine.entity.Empty.prototype.checkTileCollision = function(side){
-	var tiles = render.getMapLayer(render.map, 'Foreground').tiles,
+	var tiles = Engine.render.getMapLayer(Engine.render.map, 'Foreground').tiles,
 		//add half of the width/length in the direction the side faces to allow for basic bounding box/tile collision
-		x = Math.floor((this.pos.x + (side === 3 ? -this.size.w / 2 : (side === 1 ? this.size.w / 2 : 0))) / render.map.data.twidth),
-		y = Math.floor((this.pos.y + (side === 0 ? -this.size.l / 2 : (side === 2 ? this.size.l / 2 : 0))) / render.map.data.theight);
+		x = Math.floor((this.pos.x + (side === 3 ? -this.size.w / 2 : (side === 1 ? this.size.w / 2 : 0)) - 2) / Engine.render.map.data.twidth),
+		y = Math.floor((this.pos.y + (side === 0 ? -this.size.l : 0) - 2) / Engine.render.map.data.theight);
 	//entity is colliding with a tile in the foreground
-	if(tiles[y * render.map.data.width + x] !== 0){
-		return true;
-	}
-	return false;
+	return tiles[y * Engine.render.map.data.width + x] !== 0;
 }
 
 Engine.entity.Empty.prototype.handleTileCollision = function(){
-	if(this.checkTileCollision(0)){
-		this.x += 2;
-	}
-}
-
-//get item in hand
-Engine.entity.Empty.prototype.getActiveItem = function(){
-	return this.inventory[0][this.hand % this.inventory[0].length];
+	if(this.checkTileCollision(0))
+		this.pos.y += 2;
+	if(this.checkTileCollision(1))
+		this.pos.x -= 2;
+	if(this.checkTileCollision(2))
+		this.pos.y -= 2;
+	if(this.checkTileCollision(3))
+		this.pos.x += 2;
 }
 
 //set health and max heath to a number
