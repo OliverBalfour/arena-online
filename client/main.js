@@ -8,3 +8,5 @@ Engine.resource.XHR('demo.tmx', function(txt){
 	Engine.client.setupCanvas();
 	Engine.render.loop();
 });
+
+window.onresize = Engine.client.setupCanvas;

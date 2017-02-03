@@ -254,17 +254,14 @@ Engine.render.loop = function(){
 		Engine.render.game.clearRect(0, 0, Engine.client.w, Engine.client.h);
 		
 		//move player
-		//Engine.client.movePlayer();
-		
-		//move entities
-		//Engine.entity.updateEntities();
+		Engine.client.movePlayer();
 		
 		//calculate where everything should be drawn
 		Engine.client.calculateBasePos();
 		
 		//update game canvas
 		Engine.render.drawMapBackground();
-		//Engine.render.drawEntities();
+		Engine.render.drawEntities();
 		Engine.render.drawMapForeground();
 		
 		//increment frame counter

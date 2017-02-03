@@ -6,9 +6,7 @@ Engine.client = {
 	h: window.innerHeight
 }
 
-Engine.client.player = {
-	pos: {x: 0, y: 0}
-}
+Engine.client.player = new Engine.entity.Player();
 
 /* Client events */
 
