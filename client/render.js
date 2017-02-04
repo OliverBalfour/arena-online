@@ -52,7 +52,7 @@ Engine.render.interpretCompressedMap = function(tmx, tspath){
 	var layersArr = [],
 		layerElements = map.getElementsByTagName('layer');
 	
-	for(var i = 0, layerEl, tileDataEl, j, tiles, parsedTiles; i < 3; i++){
+	for(var i = 0, layerEl, tileDataEl, j, tiles, parsedTiles; i < layerElements.length; i++){
 		layerEl = layerElements[i];
 		tileDataEl = layerEl.getElementsByTagName('data')[0];
 		
@@ -147,6 +147,7 @@ Engine.render.getMapLayer = function(map, layerName){
 Engine.render.prepareLayer = function(layerName, map, ctx){
 	//if layer doesn't exist, exit function
 	if(!Engine.render.getMapLayer(map, layerName)){
+		console.error('Couldn\'t find layer ' + layerName);
 		return false;
 	}
 	
@@ -206,9 +207,11 @@ Engine.render.loadMap = function(mapData){
 		Engine.render.backgroundCanvas.height = Engine.render.foregroundCanvas.height = Engine.render.topCanvas.height = mapData.data.height * mapData.data.theight;
 		
 		//draw layers to layer canvases
-		Engine.render.prepareLayer('Background', mapData, Engine.render.background);
-		Engine.render.prepareLayer('Foreground', mapData, Engine.render.foreground);
-		Engine.render.prepareLayer('Top', mapData, Engine.render.top);
+		Engine.render.prepareLayer('Background',   mapData, Engine.render.background);
+		Engine.render.prepareLayer('Background 2', mapData, Engine.render.background);
+		Engine.render.prepareLayer('Foreground',   mapData, Engine.render.foreground);
+		Engine.render.prepareLayer('Foreground 2', mapData, Engine.render.foreground);
+		Engine.render.prepareLayer('Top',          mapData, Engine.render.top);
 	});
 }
 

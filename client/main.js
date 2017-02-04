@@ -1,5 +1,5 @@
 
-Engine.resource.XHR('demo.tmx', function(txt){
+Engine.resource.XHR('arena.tmx', function(txt){
 	var mapData = Engine.render.interpretCompressedMap(txt, '');
 	Engine.render.loadMap(mapData);
 

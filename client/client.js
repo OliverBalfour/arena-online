@@ -7,6 +7,7 @@ Engine.client = {
 }
 
 Engine.client.player = new Engine.entity.Player();
+Engine.client.player.pos = {x: 336, y: 544};
 
 /* Client events */
 
