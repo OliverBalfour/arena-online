@@ -2,8 +2,9 @@ Engine.client = {
 	mouse: {x: 0, y: 0, down: false},
 	keys: [],
 	playing: false,
-	w: window.innerWidth,
-	h: window.innerHeight
+	scale: 2,
+	w: window.innerWidth / 2,
+	h: window.innerHeight / 2
 }
 
 Engine.client.player = new Engine.entity.Player();
@@ -38,11 +39,16 @@ document.addEventListener('mousemove', function(e){
 
 
 Engine.client.setupCanvas = function(){
-	Engine.render.gameCanvas.width = Engine.client.w = window.innerWidth;
-	Engine.render.gameCanvas.height = Engine.client.h = window.innerHeight;
+	Engine.render.gameCanvas.width = window.innerWidth;
+	Engine.client.w = window.innerWidth / Engine.client.scale;
+	Engine.render.gameCanvas.height = window.innerHeight;
+	Engine.client.h = window.innerHeight / Engine.client.scale;
 	Engine.render.game.webkitImageSmoothingEnabled = false;
 	Engine.render.game.mozImageSmoothingEnabled = false;
 	Engine.render.game.imageSmoothingEnabled = false;
+	Engine.render.game.restore();
+	Engine.render.game.save();
+	Engine.render.game.scale(Engine.client.scale, Engine.client.scale);
 }
 
 Engine.client.movePlayer = function(){

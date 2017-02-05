@@ -9,7 +9,7 @@ Engine.entity.Empty = function(){
 	this.pos = {x: 0, y: 0, r: 0};
 	this.vel = {x: 0, y: 0, r: 0};
 	this.acc = {x: 0, y: 0, r: 0};
-	this.size = {w: 32, l: 32, h: 64};
+	this.size = {w: 32, l: 16, h: 48};
 	this.armour = {
 		helmet: 0,
 		chestplate: 0,
@@ -45,7 +45,7 @@ Engine.entity.Empty.prototype.checkTileCollision = function(side){
 		tiles2 = Engine.render.getMapLayer(Engine.render.map, 'Foreground 2').tiles,
 		//add half of the width/length in the direction the side faces to allow for basic bounding box/tile collision
 		x = Math.floor((this.pos.x + (side === 3 ? -this.size.w / 2 : (side === 1 ? this.size.w / 2 : 0))) / Engine.render.map.data.twidth),
-		y = Math.floor((this.pos.y + (side === 0 ? -this.size.l : 0)) / Engine.render.map.data.theight);
+		y = Math.floor((this.pos.y + (side === 0 ? -this.size.l : (side === 2 ? this.size.l / 4 : 0))) / Engine.render.map.data.theight);
 	//entity is colliding with a tile in the foreground
 	return tiles1[y * Engine.render.map.data.width + x] !== 0 || tiles2[y * Engine.render.map.data.width + x] !== 0;
 }
