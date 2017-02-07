@@ -162,3 +162,51 @@ Engine.resource.loadImageObjectString = function(string, origin){
 		}
 	});
 }
+
+//LPC Sprites
+Engine.resource.LPC = {
+	frames: {
+		spell: {
+			row: 0,
+			frames: 7
+		}, thrust: {
+			row: 4,
+			frames: 8
+		}, walk: {
+			row: 8,
+			frames: 8,
+			start: 1
+		}, slash: {
+			row: 12,
+			frames: 6
+		}, shoot: {
+			row: 16,
+			frames: 13
+		}, hurt: {
+			row: 20,
+			frames: 6,
+			fourway: false
+		}, idle: {
+			rows: [8,9,10,11],
+			column: 0
+		}
+	},
+	getFrame: function(action, direction, frame){
+		var d = this.frames[action];
+		if(!d) return;
+		d.fourway = d.fourway === false ? false : true;
+		d.start === d.start !== 0 ? d.start : 0;
+
+		if(d.rows){
+			return {
+				x: 64 * d.column,
+				y: 64 * d.rows[(direction + 2) % 4 % d.rows.length]
+			}
+		}
+
+		return {
+			x: 64 * (frame % d.frames + d.start),
+			y: 64 * (d.row + (d.fourway ? (direction + 2) % 4 : 0))
+		}
+	}
+}

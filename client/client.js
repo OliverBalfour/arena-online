@@ -52,21 +52,41 @@ Engine.client.setupCanvas = function(){
 }
 
 Engine.client.movePlayer = function(){
-	//A
-	if(Engine.client.keys[65]){
-		Engine.client.player.pos.x -= 2;
-	}
-	//D
-	if(Engine.client.keys[68]){
-		Engine.client.player.pos.x += 2;
-	}
+
+	Engine.client.player.action = 'idle';
+
 	//W
 	if(Engine.client.keys[87]){
 		Engine.client.player.pos.y -= 2;
+		Engine.client.player.direction = 2;
+		Engine.client.player.action = 'walk';
 	}
 	//S
 	if(Engine.client.keys[83]){
 		Engine.client.player.pos.y += 2;
+		Engine.client.player.direction = 0;
+		Engine.client.player.action = 'walk';
+	}
+
+	//A
+	if(Engine.client.keys[65]){
+		Engine.client.player.pos.x -= 2;
+		Engine.client.player.direction = 3;
+		Engine.client.player.action = 'walk';
+	}
+	//D
+	if(Engine.client.keys[68]){
+		Engine.client.player.pos.x += 2;
+		Engine.client.player.direction = 1;
+		Engine.client.player.action = 'walk';
+	}
+
+	if(Engine.client.keys[87] && Engine.client.keys[83])
+		Engine.client.player.action = 'idle';
+
+	if(Engine.client.keys[65] && Engine.client.keys[68]){
+		Engine.client.player.action = 'idle';
+		Engine.client.player.direction = 0;
 	}
 
 	Engine.client.player.handleTileCollision();

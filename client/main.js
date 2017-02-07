@@ -37,6 +37,8 @@ var handler = {
 			}else{
 				p = new Engine.entity.Player();
 				p.pid = state.players[i].id;
+				p.pos.x = state.players[i].x;
+				p.pos.y = state.players[i].y;
 			}
 		}
 

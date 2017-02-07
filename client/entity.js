@@ -28,6 +28,8 @@ Engine.entity.Empty = function(){
 		attackSpeed: 0
 	};
 	this.direction = 0;
+	this.action = 'idle';
+	this.frame = 0;
 	Engine.entity.entities.push(this);
 }
 
@@ -97,6 +99,18 @@ Engine.entity.block = function(){
 
 //player drawing function
 Engine.entity.playerDraw = function(){
-	if(this.spritesheet)
-		Engine.render.game.drawImage(this.spritesheet, 0, 384, 64, 64, Engine.client.baseX + this.pos.x - 32, Engine.client.baseY + this.pos.y - 56, 64, 64);
+	var frame;
+	if(this.spritesheet){
+		frame = Engine.resource.LPC.getFrame(this.action, this.direction, Math.floor(this.frame));
+
+		Engine.render.game.drawImage(
+			this.spritesheet,
+			frame.x, frame.y,
+			64, 64,
+			Engine.client.baseX + this.pos.x - 32, Engine.client.baseY + this.pos.y - 56,
+			64, 64
+		);
+
+		this.frame += 0.2;
+	}
 }
