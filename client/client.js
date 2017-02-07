@@ -60,12 +60,14 @@ Engine.client.movePlayer = function(){
 		Engine.client.player.pos.y -= 2;
 		Engine.client.player.direction = 2;
 		Engine.client.player.action = 'walk';
+		socket.emit('input', {type: 'm', dir: 0});
 	}
 	//S
 	if(Engine.client.keys[83]){
 		Engine.client.player.pos.y += 2;
 		Engine.client.player.direction = 0;
 		Engine.client.player.action = 'walk';
+		socket.emit('input', {type: 'm', dir: 2});
 	}
 
 	//A
@@ -73,12 +75,14 @@ Engine.client.movePlayer = function(){
 		Engine.client.player.pos.x -= 2;
 		Engine.client.player.direction = 3;
 		Engine.client.player.action = 'walk';
+		socket.emit('input', {type: 'm', dir: 3});
 	}
 	//D
 	if(Engine.client.keys[68]){
 		Engine.client.player.pos.x += 2;
 		Engine.client.player.direction = 1;
 		Engine.client.player.action = 'walk';
+		socket.emit('input', {type: 'm', dir: 1});
 	}
 
 	if(Engine.client.keys[87] && Engine.client.keys[83])

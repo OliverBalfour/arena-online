@@ -16,7 +16,7 @@ var handler = {
 	},
 	joinGame: function(){
 		dom.hide('main-menu');
-		dom.show('game');
+		dom.show('waiting-room');
 		socket.emit('play');
 	},
 	startGame: function(playerData){
@@ -24,6 +24,8 @@ var handler = {
 		Engine.client.playing = true;
 		Engine.client.setupCanvas();
 		Engine.render.loop();
+		dom.hide('waiting-room');
+		dom.show('game');
 
 		//Initial player data
 		state.players = playerData;
@@ -52,6 +54,19 @@ var handler = {
 				})[0].spritesheet = spritesheets[i];
 			}
 		});
+	},
+	update: function(playerData){
+		//Update player data
+		state.players = playerData;
+		Engine.client.player.pos.x = state.getPlayer().x;
+		Engine.client.player.pos.y = state.getPlayer().y;
+
+		//Update positions
+		for(var i = 0, p; i < state.players.length; i++){
+			p = Engine.entity.entities.filter(function(pl){return pl.pid === state.players[i].id})[0];
+			p.pos.x = state.players[i].x;
+			p.pos.y = state.players[i].y;
+		}
 	}
 }
 
@@ -64,6 +79,7 @@ var state = {
 
 socket.on('game-start', handler.startGame.bind(handler));
 socket.on('connected', handler.connect.bind(handler));
+socket.on('game-update', handler.update.bind(handler));
 
 var dom = {
 	id: function(s){ return document.getElementById(s); },

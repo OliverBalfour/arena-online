@@ -134,13 +134,7 @@ Engine.render.loadTilesets = function(map, callback){
 
 //get a map layer given a map and the layer name
 Engine.render.getMapLayer = function(map, layerName){
-	var layerObj = false;
-	for(var i = 0; i < map.layersArr.length; i++){
-		if(map.layersArr[i].name === layerName){
-			layerObj = map.layersArr[i];
-		}
-	}
-	return layerObj;
+	return map.layersArr.filter(function(l){return l.name === layerName})[0];
 }
 
 //draws a layer from a map to the correct canvas given map data with preloaded tilesets (loaded from the drawLayername functions)

@@ -16,9 +16,12 @@
 			}
 		</style>
 		
-		<div id='main-menu'>
-			Welcome to arena online! atm its not fully multiplayer but the client connects to the server to let the client join a one player game
-			<button onclick='handler.joinGame()'>Play lol</button>
+		<div id='main-menu' class='screen'>
+			<h1>Arena Online</h1>
+			<button onclick='handler.joinGame()'>Play</button>
+		</div>
+		<div id='waiting-room' class='screen hidden'>
+			<p>Waiting for players...</p>
 		</div>
 		<div id='game' class='screen hidden'>
 			<canvas id='game-canvas' class='screen'>Sorry, but your browser is too outdated to run this game. Please consider updating your browser, or getting Google Chrome or Mozilla Firefox if you are using Internet Explorer.</canvas>

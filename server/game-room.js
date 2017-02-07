@@ -50,6 +50,8 @@ module.exports = class GameRoom {
 		this.io = io;
 		this.players = players || [];
 
+		this.entities = [];
+
 		for(let socket of this.players){
 			socket.join(this.id);
 			let spwn = rspawn();
@@ -58,6 +60,13 @@ module.exports = class GameRoom {
 
 		this.io.to(this.id).emit('game-start', this.safePlayers());
 		console.log('New game started: ' + this.id);
+
+		this.physicsLoopInterval = setInterval(this.physicsLoop.bind(this), 15);
+		this.updateLoopInterval = setInterval(this.updateLoop.bind(this), 50);
+
+		this.delta = 0;
+		this.loopTime = Date.now();
+		this.prevLoopTime = Date.now() - 1;
 	}
 
 	remove (player) {
@@ -68,6 +77,51 @@ module.exports = class GameRoom {
 	//Safely transmissable
 	safePlayers (exception) {
 		return this.players.filter(p => p !== exception).map(socket => socket.player);
+	}
+
+	physicsLoop () {
+
+		this.prevLoopTime = this.loopTime;
+		this.loopTime = Date.now();
+		this.delta = 1 / (this.loopTime - this.prevLoopTime);
+
+		for(let ent of this.entities){
+			ent.x += ent.vx;
+			ent.y += ent.vy;
+			ent.checkCollision();
+		}
+
+		for(let socket of this.players){
+			let player = socket.player;
+			if(!player) continue;
+
+			for(let input of player.input){
+				let update = player.safeInput(input);
+				if(!update) continue;
+				if(update.type === 'm'){
+					switch(update.dir){
+						case 0:
+							player.y -= 60 * this.delta;
+							break;
+						case 1:
+							player.x += 60 * this.delta;
+							break;
+						case 2:
+							player.y += 60 * this.delta;
+							break;
+						case 3:
+							player.x -= 60 * this.delta;
+							break;
+					}
+				}
+			}
+
+			player.input = [];
+		}
+	}
+
+	updateLoop () {
+		this.io.to(this.id).emit('game-update', this.safePlayers());
 	}
 
 }

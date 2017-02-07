@@ -14,10 +14,16 @@ module.exports = class WebSocketHandler {
 
 		socket.on('play', this.play.bind(this, socket));
 		socket.on('disconnect', this.disconnect.bind(this, socket));
+		socket.on('input', this.input.bind(this, socket));
 	}
 
 	play (socket) {
 		this.tree.waitingRoom.add(socket);
+	}
+
+	input (socket, input) {
+		if(!socket.player) return;
+		socket.player.input.push(input);
 	}
 
 	disconnect (socket) {
