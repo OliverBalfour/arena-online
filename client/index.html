@@ -6,15 +6,25 @@
 	</head>
 	<body>
 		<style>
-			#game{
+			.screen{
 				position: absolute;
 				top: 0;
 				left: 0;
 			}
+			.hidden{
+				display: none;
+			}
 		</style>
 		
-		<canvas id='game'>Sorry, but your browser is too outdated to run this game. Please consider updating your browser, or getting Google Chrome or Mozilla Firefox if you are using Internet Explorer.</canvas>
+		<div id='main-menu'>
+			Welcome to arena online! atm its not fully multiplayer but the client connects to the server to let the client join a one player game
+			<button onclick='handler.joinGame()'>Play lol</button>
+		</div>
+		<div id='game' class='screen hidden'>
+			<canvas id='game-canvas' class='screen'>Sorry, but your browser is too outdated to run this game. Please consider updating your browser, or getting Google Chrome or Mozilla Firefox if you are using Internet Explorer.</canvas>
+		</div>
 
+		<script src='/socket.io/socket.io.js'></script>
 		<script src='zlib.js'></script>
 		<script src='engine.js'></script>
 		<script src='resource.js'></script>

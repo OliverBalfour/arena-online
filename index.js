@@ -3,10 +3,13 @@
 
 const app = require('express')();
 const http = require('http').Server(app);
-//const io = require('socket.io')(http);
+const io = require('socket.io')(http);
 
 const chalk = require('chalk');
 const path = require('path');
+
+const WebSocketHandler = require('./server/ws');
+const WaitingRoom = require('./server/waiting-room');
 
 
 /* Routing */
@@ -20,9 +23,30 @@ app.get('/*', function(req, res){
 });
 
 
+/* State tree */
+
+const tree = {};
+
+tree.waitingRoom = new WaitingRoom(tree, io, {maxPlayers: 2});
+tree.gameRooms = [];
+tree.getGame = id => tree.gameRooms.filter(rm => rm.id === id)[0];
+
+
+/* WebSockets (socket.io) */
+
+io.engine.ws = new (require('uws').Server)({
+	noServer: true,
+	perMessageDeflate: false
+});
+
+const handler = new WebSocketHandler(tree, io);
+
+io.on('connection', handler.connect.bind(handler));
+
+
 /* Initialisation */
 
-//If a (valid) port was supplied as a command line parameter (node index PORT_NO) then use it
+//If a (valid) port was supplied as a command line parameter (`node index.js PORT_NO`) then use it
 //Otherwise, fall back to port 3000
 const port = process.argv[2] ?
 		process.argv[2].match(/[^0-9]+/g) ?

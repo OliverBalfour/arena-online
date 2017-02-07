@@ -1,0 +1,37 @@
+a enemy health
+b winner damage taken
+c winner level
+d loser level
+e winner level base gold
+f winner gold
+g loser gold
+h winner xp
+i loser xp
+
+f=ROUND((1.5 - ((B3 + 1) / A3)) * E3 * 0.85^(C3-D3))
+g=ROUND((1.5 - ((B3 + 1) / A3)) * E3 * 0.85^(D3-C3) * 0.5)
+h=F3 * 3
+i=G3 * 2
+
+(lvl * 10)^2, lvl cap is 20, you start at lvl 0
+Level	XP to level up to level
+1	100
+2	400
+3	900
+4	1600
+5	2500
+6	3600
+7	4900
+8	6400
+9	8100
+10	10000
+11	12100
+12	14400
+13	16900
+14	19600
+15	22500
+16	25600
+17	28900
+18	32400
+19	36100
+20	40000

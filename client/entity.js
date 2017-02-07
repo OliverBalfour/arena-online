@@ -27,12 +27,7 @@ Engine.entity.Empty = function(){
 		speed: 0,
 		attackSpeed: 0
 	};
-	this.drops = [];
-	this.currency = 0;
-	this.buffs = [];
 	this.direction = 0;
-	this.damage = 0;
-	this.cooldown = 0;
 	Engine.entity.entities.push(this);
 }
 
@@ -69,10 +64,10 @@ Engine.entity.Empty.prototype.setHealth = function(health){
 //player constructor
 Engine.entity.Player = function(){
 	Engine.entity.Empty.call(this);
-	this.draw = Engine.entity.block;
+	this.draw = Engine.entity.playerDraw;
 	this.dead = false;
 	this.setHealth(120);
-	this.type = 0;
+	this.spritesheet = null;
 }
 Engine.entity.Player.prototype = Object.create(Engine.entity.Empty.prototype);
 
@@ -102,52 +97,6 @@ Engine.entity.block = function(){
 
 //player drawing function
 Engine.entity.playerDraw = function(){
-	/*
-	var x = Engine.client.w / 2 - this.size.w,
-		y = Engine.client.h / 2 - this.size.h;
-	
-	x = Engine.client.player.pos.x < Engine.client.w / 2 ?
-		Engine.client.player.pos.x - Engine.client.player.size.w :
-		(Engine.client.player.pos.x > render.map.data.width  * render.map.data.twidth  - Engine.client.w / 2 ?
-			(Engine.client.player.pos.x % Engine.client.w) + (Engine.client.baseX % Engine.client.w) - Engine.client.player.size.w : x
-		);
-	if(x < -Engine.client.player.size.w) x += Engine.client.w;
-	
-	y = Engine.client.player.pos.y < Engine.client.h / 2 ?
-		Engine.client.player.pos.y - Engine.client.player.size.h :
-		(Engine.client.player.pos.y > render.map.data.height * render.map.data.theight - Engine.client.h / 2 ?
-			Engine.client.h + (Engine.client.player.pos.y % Engine.client.h) + (Engine.client.baseY % Engine.client.h) - Engine.client.player.size.h : y
-		);
-	if(y < -Engine.client.player.size.h) y += Engine.client.h;
-	
-	render.game.drawImage(
-		current,
-		x, y,
-		this.size.w * 2, this.size.h
-	);
-	
-	if(this.getActiveItem() !== 0){
-		game.useImage(this.getActiveItem().texture, function(img){
-			if(this.direction === 0){
-				render.game.drawImage(
-					img,
-					x + 40, y + 8 + -this.walk
-				);
-			}else if(this.direction === 1){
-				render.game.save();
-				render.game.translate(x + 30, y + 4 + -this.walk);
-				render.game.scale(-1, 1);
-				render.game.drawImage(
-					img,
-					0, 0
-				);
-				render.game.restore();
-			}else{
-				render.game.drawImage(
-					img,
-					x + 30, y + 4 + -this.walk
-				);
-			}
-		}.bind(this));
-	}*/
+	if(this.spritesheet)
+		Engine.render.game.drawImage(this.spritesheet, 0, 384, 64, 64, Engine.client.baseX + this.pos.x - 32, Engine.client.baseY + this.pos.y - 56, 64, 64);
 }

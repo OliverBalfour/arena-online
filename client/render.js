@@ -5,7 +5,7 @@ Engine.render = {
 };
 
 //game canvases
-Engine.render.gameCanvas = document.getElementById('game');
+Engine.render.gameCanvas = document.getElementById('game-canvas');
 Engine.render.game = Engine.render.gameCanvas.getContext('2d');
 
 //layer holding canvases, populated by the drawLayer method of render
