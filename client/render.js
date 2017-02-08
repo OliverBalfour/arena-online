@@ -1,7 +1,10 @@
 Engine.render = {
 	parser: new DOMParser(), //XML DOM parser
 	map: null,
-	frames: 0
+	frames: 0,
+	delta: 0,
+	loopTime: Date.now(),
+	prevLoopTime: Date.now() - 1
 };
 
 //game canvases
@@ -247,6 +250,10 @@ Engine.render.loop = function(){
 	
 	//game loop code
 	if(Engine.client.playing){
+		this.prevLoopTime = this.loopTime;
+		this.loopTime = Date.now();
+		this.delta = 1 / (this.loopTime - this.prevLoopTime);
+
 		//clear the previous frame
 		Engine.render.game.clearRect(0, 0, Engine.client.w, Engine.client.h);
 		

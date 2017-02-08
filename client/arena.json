@@ -1,0 +1,409 @@
+{ "height":40,
+ "layers":[
+        {
+         "compression":"zlib",
+         "data":"eJydlstx3DAQRHVgPpbtACRLAciyA9AvAJWBAGQTiQuHZVXr7RsW5cMUd0FiMJ+ebozl4mKdNk7PfrJtrZ2sn\/7buzWsx3qT\/21nfwv\/+bvHN7lvyHPEmbknz8jfTda3MwfO3Hwzni6+RliT3z2siV\/2wc5cxc\/2biwf699j3eLqy3m9bX3bx++4Rrww7sQb61X1LHNaYZkj8+BahTHDo\/Wt6qFhKrFKPHZ5xxpzJgzf1gfOs2Eg1xlzvhvyjv6tt8YX\/D7rTmySUwb2Zu3act6XjNX6OPCb9bKZXpfzGA2XnMHscfaMHFnxaoPfnBXjWc5wNYvMw3giz2\/LeW70W9WJPMU91g9yEGtjeZnPiq\/3+kb82dxlDWz22fesSZ5lGGJ\/WR\/64vw1nMm+UQdt7iutZb4ZU6X\/nP09PmPd2DvTi6w3e0IMGR8T\/5mb8YvlQA1i3Ynn7A1j49wSB\/m94Y7xkxdN48jXNqeMfcUe4372JfFJvd2bL76n1lus5B9ySYV79pq4tNrtzcERjbTcDV\/URfvW+KNhv2md5WraYLpuXGiYqnSFHMF+mfbYXBj\/JxZyjbxv\/skD2X9+x16OwrflRCzyTmC4Ic9ZL8mDzIvaylnm\/0rfLF5iw+4shrtKq9lT6o\/pB\/O1vrGmxGnFjeydcU2eyVrSJzVo8\/Fl2uVB+wo\/xk17uml3Bs4ycXI17fqg\/VgcI4Y9alqFG95nyAVbfA\/THgt7ivgqnBM77CV5jfcY25fxvU77Nu27PP9EfJXesYY22zkjrF2lLRnfzbSXac\/xvEV8hi3TQqsLtZDzybgZ369pv\/FkfOxb5su7Tb4jx1faQVxnfLcH6kc+YQw8h5rH+0nOGueo\/Uf9jB+T3zmvia9qVrKn6Zvx3YgxPrvDsC7UJ+OirJdpCfv7Nu1vYf8QH+8RnE3T0KwbtTvjpo5+lp+H+DeMm27ZncjuPInbu2k\/D9q95GdcyPtEdT7ngT6SPxt8kWPtPsO7RcaQcTd8a7WuuIffUHsq\/9RJzgfzNW7hDA2czdyNT4kfannWMfdTM8gnvPdlvO9Rufzf",
+         "encoding":"base64",
+         "height":40,
+         "name":"Background",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":40,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "compression":"zlib",
+         "data":"eJzt180NgjAYxvFGenUER2BLLq4gTKDEBQAXkKFoDyRVvoS3lMfm+SfvgYbDL6QNqVLL3RKlcjNF8sPLB0SfLPpk0SeLPlm+fOVpuPYcWVubL19tLM3XvIB8e0WfrJC+84b9GNJ3idB3N66HmRLUFzJ0XwruQ6rSRwumszZ0n9sb2Mq21+r5Z\/YZz4Gf+B3jyL3z9nddpP9avXDXzUasVyC\/zT0r\/3JuEPYAgiH2OjpKOGo=",
+         "encoding":"base64",
+         "height":40,
+         "name":"Background 2",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":40,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "compression":"zlib",
+         "data":"eJzNmM9OFEEQxnvZwfAA+AAePCyeQS\/IQeXPVUDgjgEewAQS5GbixfgIPAFwRA968Awc9IhRwiIPoIaDCYlfZbqyPZXunprdmYYv+bI7Mz3Fb6u6a3q4aBvzK+CYQve4fo5x23AHnlLe4\/oS\/is49nC8X8KmHct8T1rGLNhzh63e9Y\/2+4dW8b6uPb6yfP+GjLkeys99wvFnJZ871o3BWoPvmmIOWSeC6RjH78Q5H59Wx+I3cIwTcZ5yOG\/yHEpG0pFg8vHVqR+Id+TEdHP42vTqrFETfKeI993G\/Gk\/Y3Wui+\/LgL+DGUN19qmJ\/MVEc3HH5PNRU+cQ3znOdRvg5hwSnyaHPr6RdtE+acaExDl0e2KM772If79dtE+xMTLeICK+3Zr5ZDwprjHlsKzGxHdQM5+M5xPVmHph2Vr2zb\/xdtE+acbExDkkxlhPTN1fXPHegdeKjzHEd29Y9ze046Qm4TGT95l50+uJHXudOW8qf7xnGIXXTa8n7tjrxPnY5Jw3xUdsG\/aY5iNzknheUn8s45M17LemLK6trzev2U9eOx0FX92SufPJ3Usw31kiTuLT7A245inzF6utT7R+Lyq+u4XeszTS1FbyUf4eVHz3cEX3Xin4quaOVFf\/0\/BVzR3HTcHXT+44bgq+fnLHcZvm6zd3HLfp\/sL7lNvMV1bb8cyYCfgh\/ChLzxfL3VPwPIOn4Rl4Fp7L0vLF9vALYFmEX8BL8DK8kpCPn\/WhHK6C5SX8Ff4Gr8MbCflIsRpn2K+9As853IU34a2a+TTPj5BGwfcGPL\/hP\/DbBtaHpj+XvevSvlfufVP259v6\/OD\/twzSn5vcX5Wt35gobob5ONywef1Wve8O\/B930NeK",
+         "encoding":"base64",
+         "height":40,
+         "name":"Foreground",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":40,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "compression":"zlib",
+         "data":"eJxjYGBg+MXEwPAXiNFBCTMDQykzYTEGNDMmAOUnYlFDLsDlvhagHa3MhMXQzVgAlF9IRfdRG2wAum0jFd33CujvN1D8Fks44gIpzNj1HgCKH6Ry\/P6GYmzxTIre00B3naFy3HIBzeOBYl4SzUbXexuI71DZfVJA86yhWJZEs9H13oViagItJDt0STSbEr3EAiskO2xJtAOmVxuqNx2IM6jsTlzug+VNZICex0n121omVEys+7Sx2AHLm8gAPY9TEvbEAlx2wPImMkDP47R23xdmTDuagLiZGZI3pdHslIHmU5gakF5PGoefF9Bcbyj2BeJJQDyZGZE3kQEsn8LUgPRGIumlJ7DC4T7kcCoHsiuAuAqIs4A4lY5uhIWrI9RO5wEKp1EwCkYBJvg2mg9HwSgYBaNgFIyCYQtI6euOglEwCugL2FhoZzYANqxPcg==",
+         "encoding":"base64",
+         "height":40,
+         "name":"Foreground 2",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":40,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "compression":"zlib",
+         "data":"eJxjYBjZ4AbjQLtg6IL9zBB6KjPt7VpEhh3nkfTQOp430SEMhjKIYoZgELgEpC+TEF7IeokBt8mIazdmCCYHUKKXWBDGDMHYwBsmBCZVL7UAvjj6zYTApOpFB2eZUDGxwJ0ZgrEBHmYExgbCmSF4oIA0MwJTC1CrPIwBukkRiJWAWJkZwh9oIMiKYOcA3WMIxEZAbMwM4WNTRy64SWE41kDd48SMyqcWuAN1361B3s65S6b70OOQGnE6HMGFQZAvhyrgJqGeoaZeYoE0BXZQoncUjIJRMPgBof6QKgsDgxoQqwOxBgt93EQsMMHiHstB5kYQmAF008xB6C4YWAF028pB7L5RgB2cQerrnsNTV4PavUO17TvavhoFAwUAi\/wp+g==",
+         "encoding":"base64",
+         "height":40,
+         "name":"Top",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":40,
+         "x":0,
+         "y":0
+        }],
+ "nextobjectid":1,
+ "orientation":"orthogonal",
+ "renderorder":"right-down",
+ "tileheight":32,
+ "tilesets":[
+        {
+         "columns":21,
+         "firstgid":1,
+         "image":"tilesets\/terrain.png",
+         "imageheight":736,
+         "imagewidth":672,
+         "margin":0,
+         "name":"terrain",
+         "spacing":0,
+         "terrains":[
+                {
+                 "name":"Water",
+                 "tile":-1
+                }, 
+                {
+                 "name":"Grass",
+                 "tile":-1
+                }],
+         "tilecount":483,
+         "tileheight":32,
+         "tiles":
+            {
+             "102":
+                {
+                 "terrain":[-1, 0, -1, -1]
+                },
+             "103":
+                {
+                 "terrain":[0, 0, -1, -1]
+                },
+             "104":
+                {
+                 "terrain":[0, -1, -1, -1]
+                },
+             "123":
+                {
+                 "terrain":[0, 0, 0, 0]
+                },
+             "124":
+                {
+                 "terrain":[0, 0, 0, 0]
+                },
+             "125":
+                {
+                 "terrain":[0, 0, 0, 0]
+                },
+             "127":
+                {
+                 "terrain":[1, 1, 1, -1]
+                },
+             "128":
+                {
+                 "terrain":[1, 1, -1, 1]
+                },
+             "130":
+                {
+                 "terrain":[1, 1, 1, -1]
+                },
+             "131":
+                {
+                 "terrain":[1, 1, -1, 1]
+                },
+             "148":
+                {
+                 "terrain":[1, -1, 1, 1]
+                },
+             "149":
+                {
+                 "terrain":[-1, 1, 1, 1]
+                },
+             "151":
+                {
+                 "terrain":[1, -1, 1, 1]
+                },
+             "152":
+                {
+                 "terrain":[-1, 1, 1, 1]
+                },
+             "168":
+                {
+                 "terrain":[-1, -1, -1, 1]
+                },
+             "169":
+                {
+                 "terrain":[-1, -1, 1, 1]
+                },
+             "170":
+                {
+                 "terrain":[-1, -1, 1, -1]
+                },
+             "171":
+                {
+                 "terrain":[-1, -1, -1, 1]
+                },
+             "172":
+                {
+                 "terrain":[-1, -1, 1, 1]
+                },
+             "173":
+                {
+                 "terrain":[-1, -1, 1, -1]
+                },
+             "189":
+                {
+                 "terrain":[-1, 1, -1, 1]
+                },
+             "19":
+                {
+                 "terrain":[0, 0, 0, -1]
+                },
+             "190":
+                {
+                 "terrain":[1, 1, 1, 1]
+                },
+             "191":
+                {
+                 "terrain":[1, -1, 1, -1]
+                },
+             "192":
+                {
+                 "terrain":[-1, 1, -1, 1]
+                },
+             "193":
+                {
+                 "terrain":[1, 1, 1, 1]
+                },
+             "194":
+                {
+                 "terrain":[1, -1, 1, -1]
+                },
+             "20":
+                {
+                 "terrain":[0, 0, -1, 0]
+                },
+             "210":
+                {
+                 "terrain":[-1, 1, -1, -1]
+                },
+             "211":
+                {
+                 "terrain":[1, 1, -1, -1]
+                },
+             "212":
+                {
+                 "terrain":[1, -1, -1, -1]
+                },
+             "213":
+                {
+                 "terrain":[-1, 1, -1, -1]
+                },
+             "214":
+                {
+                 "terrain":[1, 1, -1, -1]
+                },
+             "215":
+                {
+                 "terrain":[1, -1, -1, -1]
+                },
+             "231":
+                {
+                 "terrain":[1, 1, 1, 1]
+                },
+             "232":
+                {
+                 "terrain":[1, 1, 1, 1]
+                },
+             "233":
+                {
+                 "terrain":[1, 1, 1, 1]
+                },
+             "234":
+                {
+                 "terrain":[1, 1, 1, 1]
+                },
+             "235":
+                {
+                 "terrain":[1, 1, 1, 1]
+                },
+             "236":
+                {
+                 "terrain":[1, 1, 1, 1]
+                },
+             "243":
+                {
+                 "terrain":[1, 1, 1, 1]
+                },
+             "244":
+                {
+                 "terrain":[1, 1, 1, 1]
+                },
+             "245":
+                {
+                 "terrain":[1, 1, 1, 1]
+                },
+             "259":
+                {
+                 "terrain":[0, 0, 0, 1]
+                },
+             "260":
+                {
+                 "terrain":[0, 0, 1, 0]
+                },
+             "280":
+                {
+                 "terrain":[0, 1, 0, 0]
+                },
+             "281":
+                {
+                 "terrain":[1, 0, 0, 0]
+                },
+             "300":
+                {
+                 "terrain":[1, 1, 1, 0]
+                },
+             "301":
+                {
+                 "terrain":[1, 1, 0, 0]
+                },
+             "302":
+                {
+                 "terrain":[1, 1, 0, 1]
+                },
+             "321":
+                {
+                 "terrain":[1, 0, 1, 0]
+                },
+             "322":
+                {
+                 "terrain":[0, 0, 0, 0]
+                },
+             "323":
+                {
+                 "terrain":[0, 1, 0, 1]
+                },
+             "342":
+                {
+                 "terrain":[1, 0, 1, 1]
+                },
+             "343":
+                {
+                 "terrain":[0, 0, 1, 1]
+                },
+             "344":
+                {
+                 "terrain":[0, 1, 1, 1]
+                },
+             "40":
+                {
+                 "terrain":[0, -1, 0, 0]
+                },
+             "41":
+                {
+                 "terrain":[-1, 0, 0, 0]
+                },
+             "60":
+                {
+                 "terrain":[-1, -1, -1, 0]
+                },
+             "61":
+                {
+                 "terrain":[-1, -1, 0, 0]
+                },
+             "62":
+                {
+                 "terrain":[-1, -1, 0, -1]
+                },
+             "81":
+                {
+                 "terrain":[-1, 0, -1, 0]
+                },
+             "82":
+                {
+                 "terrain":[0, 0, 0, 0]
+                },
+             "83":
+                {
+                 "terrain":[0, -1, 0, -1]
+                }
+            },
+         "tilewidth":32
+        }, 
+        {
+         "columns":16,
+         "firstgid":484,
+         "image":"tilesets\/Outside_B.png",
+         "imageheight":512,
+         "imagewidth":512,
+         "margin":0,
+         "name":"outside",
+         "spacing":0,
+         "tilecount":256,
+         "tileheight":32,
+         "tilewidth":32
+        }, 
+        {
+         "columns":16,
+         "firstgid":740,
+         "image":"tilesets\/Castle2.png",
+         "imageheight":512,
+         "imagewidth":512,
+         "margin":0,
+         "name":"castle",
+         "spacing":0,
+         "tilecount":256,
+         "tileheight":32,
+         "tilewidth":32
+        }, 
+        {
+         "columns":16,
+         "firstgid":996,
+         "image":"tilesets\/arena-tiles.png",
+         "imageheight":128,
+         "imagewidth":512,
+         "margin":0,
+         "name":"arena-tiles",
+         "spacing":0,
+         "tilecount":64,
+         "tileheight":32,
+         "tilewidth":32
+        }, 
+        {
+         "columns":16,
+         "firstgid":1060,
+         "image":"tilesets\/mountain_landscape_25.png",
+         "imageheight":512,
+         "imagewidth":512,
+         "margin":0,
+         "name":"mtn",
+         "spacing":0,
+         "tilecount":256,
+         "tileheight":32,
+         "tilewidth":32
+        }],
+ "tilewidth":32,
+ "version":1,
+ "width":40
+}

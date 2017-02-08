@@ -58,14 +58,13 @@ var handler = {
 	update: function(playerData){
 		//Update player data
 		state.players = playerData;
-		Engine.client.player.pos.x = state.getPlayer().x;
-		Engine.client.player.pos.y = state.getPlayer().y;
 
 		//Update positions
 		for(var i = 0, p; i < state.players.length; i++){
 			p = Engine.entity.entities.filter(function(pl){return pl.pid === state.players[i].id})[0];
-			p.pos.x = state.players[i].x;
-			p.pos.y = state.players[i].y;
+			p.lerpPos.x = state.players[i].x;
+			p.lerpPos.y = state.players[i].y;
+			p.lerp();
 		}
 	}
 }

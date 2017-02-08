@@ -62,7 +62,7 @@ module.exports = class GameRoom {
 		console.log('New game started: ' + this.id);
 
 		this.physicsLoopInterval = setInterval(this.physicsLoop.bind(this), 15);
-		this.updateLoopInterval = setInterval(this.updateLoop.bind(this), 50);
+		this.updateLoopInterval = setInterval(this.updateLoop.bind(this), 100);
 
 		this.delta = 0;
 		this.loopTime = Date.now();
@@ -101,22 +101,23 @@ module.exports = class GameRoom {
 				if(update.type === 'm'){
 					switch(update.dir){
 						case 0:
-							player.y -= 60 * this.delta;
+							player.y -= 120 * this.delta;
 							break;
 						case 1:
-							player.x += 60 * this.delta;
+							player.x += 120 * this.delta;
 							break;
 						case 2:
-							player.y += 60 * this.delta;
+							player.y += 120 * this.delta;
 							break;
 						case 3:
-							player.x -= 60 * this.delta;
+							player.x -= 120 * this.delta;
 							break;
 					}
 				}
 			}
 
 			player.input = [];
+			player.handleTileCollision();
 		}
 	}
 

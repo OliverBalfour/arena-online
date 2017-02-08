@@ -6,9 +6,10 @@ Engine.entity = {
 
 //empty entity object constructor
 Engine.entity.Empty = function(){
-	this.pos = {x: 0, y: 0, r: 0};
-	this.vel = {x: 0, y: 0, r: 0};
-	this.acc = {x: 0, y: 0, r: 0};
+	this.pos = {x: 0, y: 0};
+	this.lerpPos = {x: 0, y: 0};
+	this.vel = {x: 0, y: 0};
+	this.acc = {x: 0, y: 0};
 	this.size = {w: 32, l: 16, h: 48};
 	this.armour = {
 		helmet: 0,
@@ -37,25 +38,50 @@ Engine.entity.Empty = function(){
 Engine.entity.Empty.prototype.draw = Engine.entity.block;
 
 //tile collision detection, where side is between 0 and 4, 0 for up, 3 for left (clockwise)
-Engine.entity.Empty.prototype.checkTileCollision = function(side){
+Engine.entity.Empty.prototype.handleTileSideCollision = function(side, pos){
+
+	pos = pos || this.pos;
+
 	var tiles1 = Engine.render.getMapLayer(Engine.render.map, 'Foreground').tiles,
 		tiles2 = Engine.render.getMapLayer(Engine.render.map, 'Foreground 2').tiles,
 		//add half of the width/length in the direction the side faces to allow for basic bounding box/tile collision
-		x = Math.floor((this.pos.x + (side === 3 ? -this.size.w / 2 : (side === 1 ? this.size.w / 2 : 0))) / Engine.render.map.data.twidth),
-		y = Math.floor((this.pos.y + (side === 0 ? -this.size.l : (side === 2 ? this.size.l / 4 : 0))) / Engine.render.map.data.theight);
-	//entity is colliding with a tile in the foreground
-	return tiles1[y * Engine.render.map.data.width + x] !== 0 || tiles2[y * Engine.render.map.data.width + x] !== 0;
+		x = pos.x + (side === 3 ? -this.size.w / 2 : (side === 1 ? this.size.w / 2 : 0)),
+		y = pos.y + (side === 0 ? -this.size.l : (side === 2 ? this.size.l / 4 : 0));
+
+	var arrX = Math.floor(x / Engine.render.map.data.twidth),
+		arrY = Math.floor(y / Engine.render.map.data.theight);
+
+	var collision = tiles1[arrY * Engine.render.map.data.width + arrX] !== 0 || tiles2[arrY * Engine.render.map.data.width + arrX] !== 0;
+
+	if(!collision) return;
+
+	if(side === 0)
+		pos.y += Engine.render.map.data.theight - (y % Engine.render.map.data.theight);
+	else if(side === 1)
+		pos.x -= x % Engine.render.map.data.twidth;
+	else if(side === 2)
+		pos.y -= x % Engine.render.map.data.theight;
+	else if(side === 3)
+		pos.x += Engine.render.map.data.twidth - (x % Engine.render.map.data.twidth);
+
 }
 
 Engine.entity.Empty.prototype.handleTileCollision = function(){
-	if(this.checkTileCollision(0))
-		this.pos.y += 2;
-	if(this.checkTileCollision(1))
-		this.pos.x -= 2;
-	if(this.checkTileCollision(2))
-		this.pos.y -= 2;
-	if(this.checkTileCollision(3))
-		this.pos.x += 2;
+	for(var i = 0; i < 4; i++){
+		this.handleTileSideCollision(i);
+		if(this.lerpPos.x !== 0)
+			this.handleTileSideCollision(i, this.lerpPos);
+	}
+}
+
+Engine.entity.Empty.prototype.lerp = function(){
+	if(Math.hypot(this.pos.x - this.lerpPos.x, this.pos.y - this.lerpPos.y) < 5){
+		this.pos.x = this.lerpPos.x;
+		this.pos.y = this.lerpPos.y;
+	}else{
+		this.pos.x += (this.lerpPos.x - this.pos.x) * 0.5;
+		this.pos.y += (this.lerpPos.y - this.pos.y) * 0.5;
+	}
 }
 
 //set health and max heath to a number
@@ -94,7 +120,11 @@ Engine.entity.textureDraw = function(){
 //basic black block drawing function
 Engine.entity.block = function(){
 	Engine.render.game.fillStyle = 'black';
-	Engine.render.game.fillRect(Engine.client.baseX + this.pos.x - this.size.w / 2, Engine.client.baseY + this.pos.y - this.size.h, this.size.w, this.size.h);
+	Engine.render.game.fillRect(
+		Engine.client.baseX + this.pos.x - this.size.w / 2,
+		Engine.client.baseY + this.pos.y - this.size.h,
+		this.size.w, this.size.h
+	);
 }
 
 //player drawing function
