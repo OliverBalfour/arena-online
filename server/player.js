@@ -48,7 +48,7 @@ module.exports = class Player {
 		else if(side === 1)
 			this.x -= x % map.data.twidth;
 		else if(side === 2)
-			this.y -= x % map.data.theight;
+			this.y -= y % map.data.theight;
 		else if(side === 3)
 			this.x += map.data.twidth - (x % map.data.twidth);
 

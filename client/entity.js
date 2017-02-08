@@ -60,7 +60,7 @@ Engine.entity.Empty.prototype.handleTileSideCollision = function(side, pos){
 	else if(side === 1)
 		pos.x -= x % Engine.render.map.data.twidth;
 	else if(side === 2)
-		pos.y -= x % Engine.render.map.data.theight;
+		pos.y -= y % Engine.render.map.data.theight;
 	else if(side === 3)
 		pos.x += Engine.render.map.data.twidth - (x % Engine.render.map.data.twidth);
 
