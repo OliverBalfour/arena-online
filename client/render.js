@@ -63,7 +63,12 @@ Engine.render.interpretCompressedMap = function(tmx, tspath){
 		parsedTiles = [];
 		
 		//decompress the tile base64 zlib compressed gibberish and put into an array, parsedTiles
-		tiles = new Zlib.Inflate(atob(tileDataEl.innerHTML).split('').map(function(e){return e.charCodeAt(0)})).decompress();
+		tiles = new Zlib.Inflate(
+			atob(tileDataEl.innerHTML)
+				.split('')
+				.map(function(e){return e.charCodeAt(0)})
+		).decompress();
+		
 		tiles.slice.call(tiles);
 		for(j = 0; j <= tiles.length; j += 4){
 			parsedTiles.push(tiles[j] | tiles[j + 1] << 8 | tiles[j + 2] << 16 | tiles[j + 3] << 24);
