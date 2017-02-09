@@ -1,15 +1,19 @@
 
 const textures = [
-	'gold-archer', 'skele-guard', 'nudist', 'universal-male',
+	'gold-archer', 'skele-guard', 'universal-male',
 	'spearman', 'knight', 'edgy-archer', 'cool-archer',
 	'dress-person', 'edgelord', 'goldenspear',
 	'archer-dark-skin', 'archer-bucket-hat', 'fullgolden-archermist',
 	'golden-swordsman', 'pink-hair', 'light-armour-knight',
-	'dark-light-armour', 'enraged-nudist', 'orc-sword',
-	'dark-spearman', 'caped-spearwoman'
+	'dark-light-armour', 'orc-sword',
+	'dark-spearman', 'caped-spearwoman', 'jimmy'
 ];
 
-const rtexture = () => textures[Math.floor(Math.random() * textures.length)];
+const rarities = ['nudist', 'enraged-nudist'];
+
+const rtexture = () => Math.floor(Math.random() * 200) < rarities.length ?
+	rarities[Math.floor(Math.random() * rarities.length)]
+	: textures[Math.floor(Math.random() * textures.length)];
 
 const map = require('./tmx');
 
