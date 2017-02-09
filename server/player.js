@@ -2,7 +2,11 @@
 const textures = [
 	'gold-archer', 'skele-guard', 'nudist', 'universal-male',
 	'spearman', 'knight', 'edgy-archer', 'cool-archer',
-	'dress-person', 'edgelord', 'goldenspear'
+	'dress-person', 'edgelord', 'goldenspear',
+	'archer-dark-skin', 'archer-bucket-hat', 'fullgolden-archermist',
+	'golden-swordsman', 'pink-hair', 'light-armour-knight',
+	'dark-light-armour', 'enraged-nudist', 'orc-sword',
+	'dark-spearman', 'caped-spearwoman'
 ];
 
 const rtexture = () => textures[Math.floor(Math.random() * textures.length)];

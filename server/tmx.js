@@ -18,7 +18,7 @@ function tileData(d, callback){
 			for(j = 0; j <= tiles.length; j += 4){
 				parsedTiles.push(tiles[j] | tiles[j + 1] << 8 | tiles[j + 2] << 16 | tiles[j + 3] << 24);
 			}
-			callback(parsedTiles);
+			callback(tiles);
 		}else{
 			console.log(err);
 		}
