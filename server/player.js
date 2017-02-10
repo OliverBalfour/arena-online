@@ -26,13 +26,25 @@ module.exports = class Player {
 		this.id = id;
 		this.input = [];
 		this.size = {w: 32, l: 16, h: 48};
+		//Animation cycle
+		this.action = 'walk';
+		//Frame in whatever animation cycle the player is doing
+		this.frame = 0;
+		//duh
+		this.direction = 0;
 	}
 
 	safeInput (input) {
 		if(!input.type)
 			return;
-		if(input.type === 'm' && typeof input.dir === 'number' && input.dir >= 0 && input.dir < 4)
-			return {type: input.type, dir: input.dir};
+		if(
+			input.type === 'm'
+			&& typeof input.dir === 'number'
+			&& Math.floor(input.dir) >= 0 && Math.floor(input.dir) < 4
+		){
+			//8 is the number of frames in the walk cycle
+			return {type: input.type, dir: Math.floor(input.dir)};
+		}
 	}
 
 	//tile collision detection, where side is between 0 and 4, 0 for up, 3 for left (clockwise)

@@ -64,6 +64,19 @@ var handler = {
 			p = Engine.entity.entities.filter(function(pl){return pl.pid === state.players[i].id})[0];
 			p.lerpPos.x = state.players[i].x;
 			p.lerpPos.y = state.players[i].y;
+			if(p !== Engine.client.player && p.action !== state.players[i].action){
+				p.action = state.players[i].action;
+
+				//Have they actually moved?
+				if(Math.hypot(p.lerpPos.x - p.pos.x, p.lerpPos.y - p.pos.x) < 5){
+					p.action = 'idle';
+					p.frame = 0;
+				}
+
+				p.direction = state.players[i].direction;
+				if(p.direction === 0) p.direction = 2;
+				else if(p.direction === 2) p.direction = 0;
+			}
 			p.lerp();
 		}
 	}

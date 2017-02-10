@@ -79,8 +79,8 @@ Engine.entity.Empty.prototype.lerp = function(){
 		this.pos.x = this.lerpPos.x;
 		this.pos.y = this.lerpPos.y;
 	}else{
-		this.pos.x += (this.lerpPos.x - this.pos.x) * 0.5;
-		this.pos.y += (this.lerpPos.y - this.pos.y) * 0.5;
+		this.pos.x += (this.lerpPos.x - this.pos.x) * 0.3;
+		this.pos.y += (this.lerpPos.y - this.pos.y) * 0.3;
 	}
 }
 
@@ -141,6 +141,8 @@ Engine.entity.playerDraw = function(){
 			64, 64
 		);
 
-		this.frame += 0.2;
+		if(this.action !== 'idle'){
+			this.frame += 0.2;
+		}
 	}
 }

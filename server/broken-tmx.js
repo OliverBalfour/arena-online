@@ -8,23 +8,23 @@ const zlib = require('zlib');
 
 const tmxData = fs.readFileSync('./client/arena.json', 'utf8');
 
-function tileData(d, callback){
-	const buffer = Buffer.from(d, 'base64');
-	buffer = buffer.toString().split('').map(e => e.charCodeAt(0));
-	zlib.unzip(buffer, (err, bfr) => {
-		if(!err){
-			let tiles = bfr.toString();
-			let parsedTiles = [];
-			tiles.slice.call(tiles);
-			for(let j = 0; j <= tiles.length; j += 4){
-				parsedTiles.push(tiles[j] | tiles[j + 1] << 8 | tiles[j + 2] << 16 | tiles[j + 3] << 24);
+	function tileData(d, callback){
+		const buffer = Buffer.from(d, 'base64');
+		buffer = buffer.toString().split('').map(e => e.charCodeAt(0));
+		zlib.inflate(buffer, (err, bfr) => {
+			if(!err){
+				let tiles = bfr.toString();
+				let parsedTiles = [];
+				tiles.slice.call(tiles);
+				for(let j = 0; j <= tiles.length; j += 4){
+					parsedTiles.push(tiles[j] | tiles[j + 1] << 8 | tiles[j + 2] << 16 | tiles[j + 3] << 24);
+				}
+				callback(parsedTiles);
+			}else{
+				console.log(err);
 			}
-			callback(parsedTiles);
-		}else{
-			console.log(err);
-		}
-	});
-}
+		});
+	}
 
 module.exports = interpretJSONCompressedMap(tmxData);
 

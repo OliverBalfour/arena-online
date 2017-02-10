@@ -8,7 +8,6 @@ Engine.client = {
 }
 
 Engine.client.player = new Engine.entity.Player();
-Engine.client.player.pos = {x: 336, y: 544};
 
 /* Client events */
 
@@ -61,7 +60,7 @@ Engine.client.movePlayer = function(){
 		Engine.client.player.direction = 2;
 		Engine.client.player.action = 'walk';
 		if(Engine.render.frames % 4 === 0)
-			socket.emit('input', {type: 'm', dir: 0});
+			socket.emit('input', {type: 'm', dir: 0, f: Math.floor(Engine.client.player.frame)});
 	}
 	//S
 	if(Engine.client.keys[83]){
@@ -69,7 +68,7 @@ Engine.client.movePlayer = function(){
 		Engine.client.player.direction = 0;
 		Engine.client.player.action = 'walk';
 		if(Engine.render.frames % 4 === 0)
-			socket.emit('input', {type: 'm', dir: 2});
+			socket.emit('input', {type: 'm', dir: 2, f: Math.floor(Engine.client.player.frame)});
 	}
 
 	//A
@@ -78,7 +77,7 @@ Engine.client.movePlayer = function(){
 		Engine.client.player.direction = 3;
 		Engine.client.player.action = 'walk';
 		if(Engine.render.frames % 4 === 0)
-			socket.emit('input', {type: 'm', dir: 3});
+			socket.emit('input', {type: 'm', dir: 3, f: Math.floor(Engine.client.player.frame)});
 	}
 	//D
 	if(Engine.client.keys[68]){
@@ -86,7 +85,7 @@ Engine.client.movePlayer = function(){
 		Engine.client.player.direction = 1;
 		Engine.client.player.action = 'walk';
 		if(Engine.render.frames % 4 === 0)
-			socket.emit('input', {type: 'm', dir: 1});
+			socket.emit('input', {type: 'm', dir: 1, f: Math.floor(Engine.client.player.frame)});
 	}
 
 	if(Engine.client.keys[87] && Engine.client.keys[83])

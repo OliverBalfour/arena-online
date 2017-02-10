@@ -62,7 +62,7 @@ module.exports = class GameRoom {
 		console.log('New game started: ' + this.id);
 
 		this.physicsLoopInterval = setInterval(this.physicsLoop.bind(this), 15);
-		this.updateLoopInterval = setInterval(this.updateLoop.bind(this), 100);
+		this.updateLoopInterval = setInterval(this.updateLoop.bind(this), 50);
 
 		this.delta = 0;
 		this.loopTime = Date.now();
@@ -113,6 +113,8 @@ module.exports = class GameRoom {
 							player.x -= 120 * this.delta;
 							break;
 					}
+					player.action = 'walk';
+					player.direction = update.dir;
 				}
 			}
 
