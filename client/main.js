@@ -64,11 +64,12 @@ var handler = {
 			p = Engine.entity.entities.filter(function(pl){return pl.pid === state.players[i].id})[0];
 			p.lerpPos.x = state.players[i].x;
 			p.lerpPos.y = state.players[i].y;
-			if(p !== Engine.client.player && p.action !== state.players[i].action){
+			if(p !== Engine.client.player){
 				p.action = state.players[i].action;
 
 				//Have they actually moved?
-				if(Math.hypot(p.lerpPos.x - p.pos.x, p.lerpPos.y - p.pos.x) < 5){
+				if(Math.hypot(p.lerpPos.x - p.pos.x, p.lerpPos.y - p.pos.y) < 5){
+					console.log('lol')
 					p.action = 'idle';
 					p.frame = 0;
 				}
