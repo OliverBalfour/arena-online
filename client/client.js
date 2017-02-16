@@ -52,8 +52,6 @@ Engine.client.setupCanvas = function(){
 
 Engine.client.movePlayer = function(){
 
-	Engine.client.player.action = 'idle';
-
 	//W
 	if(Engine.client.keys[87]){
 		Engine.client.player.pos.y -= 30 * Engine.render.delta;
@@ -96,6 +94,13 @@ Engine.client.movePlayer = function(){
 		Engine.client.player.direction = 0;
 	}
 
+	if(Engine.client.player.action === 'walk' && !(
+		Engine.client.keys[87] || Engine.client.keys[83]
+		|| Engine.client.keys[65] || Engine.client.keys[68]
+	)){
+		Engine.client.player.action = 'idle';
+	}
+
 	Engine.client.player.handleTileCollision();
 	
 	if(Engine.client.player.pos.x < 0) Engine.client.player.pos.x = 0;
@@ -103,6 +108,18 @@ Engine.client.movePlayer = function(){
 	if(Engine.client.player.pos.y < 0) Engine.client.player.pos.y = 0;
 	if(Engine.client.player.pos.y > Engine.render.map.data.height * Engine.render.map.data.theight) Engine.client.player.pos.x = Engine.render.map.data.height * Engine.render.map.data.theight;
 	
+}
+
+//are they attacking?
+Engine.client.updateAttack = function(){
+	//sword
+	if(Engine.client.keys[32]){
+		Engine.client.player.action = 'slash';
+		socket.emit('input', {type: 'at'});
+	}else if(Engine.client.player.action === 'slash'){
+		Engine.client.player.action = 'idle';
+		socket.emit('input', {type: 'sat'});
+	}
 }
 
 //calculate x and y to start map Engine.render ing from

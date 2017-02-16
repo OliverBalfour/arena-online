@@ -195,7 +195,7 @@ Engine.resource.LPC = {
 		var d = this.frames[action];
 		if(!d) return;
 		d.fourway = d.fourway === false ? false : true;
-		d.start === d.start !== 0 ? d.start : 0;
+		d.start = d.start ? d.start : 0;
 
 		if(d.rows){
 			return {
