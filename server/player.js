@@ -44,6 +44,8 @@ module.exports = class Player {
 		){
 			//8 is the number of frames in the walk cycle
 			return {type: input.type, dir: Math.floor(input.dir)};
+		}else if(input.type === 'at' || input.type === 'sat'){
+			return {type: input.type};
 		}
 	}
 

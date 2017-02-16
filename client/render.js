@@ -264,6 +264,9 @@ Engine.render.loop = function(){
 		
 		//move player
 		Engine.client.movePlayer();
+
+		//is the client attacking?
+		Engine.client.updateAttack();
 		
 		//calculate where everything should be drawn
 		Engine.client.calculateBasePos();

@@ -68,8 +68,7 @@ var handler = {
 				p.action = state.players[i].action;
 
 				//Have they actually moved?
-				if(Math.hypot(p.lerpPos.x - p.pos.x, p.lerpPos.y - p.pos.y) < 5){
-					console.log('lol')
+				if(p.action === 'walk' && Math.hypot(p.lerpPos.x - p.pos.x, p.lerpPos.y - p.pos.y) < 5){
 					p.action = 'idle';
 					p.frame = 0;
 				}

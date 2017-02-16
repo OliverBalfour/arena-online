@@ -115,6 +115,10 @@ module.exports = class GameRoom {
 					}
 					player.action = 'walk';
 					player.direction = update.dir;
+				}else if(input.type === 'at'){
+					player.action = 'slash';
+				}else if(input.type === 'at'){
+					player.action = 'walk';
 				}
 			}
 
