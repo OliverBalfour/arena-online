@@ -6,27 +6,136 @@
 	</head>
 	<body>
 		<style>
+			@font-face{
+				font-family: "Augusta";
+				src: url('Augusta.ttf');
+			}
 			.screen{
 				position: absolute;
 				top: 0;
 				left: 0;
+				height: 100%;
+				width: 100%;
+				overflow: hidden;
 			}
 			.hidden{
 				display: none;
 			}
+			.background{
+				position: absolute;
+				top: 0;
+				left: 0;
+				min-height: 100%;
+				min-width: 100%;
+				z-index: -1;
+			}
+			#play{
+			    position: absolute;
+				top: calc(50% - 65px);
+				left: 48%;
+				width: 100%;
+				font-size: 60px;
+				color: gold;
+				font-family: 'Augusta';
+				cursor: pointer;
+			}
+			#play:hover{
+				/* Insert a image change to the play button */
+				
+			}
+			#info-btn{
+			    position: absolute;
+				top: 550px;
+				right: 20px;
+				font-family: 'Augusta';
+				cursor: pointer;
+				color: gold;
+				font-size: 50px;
+			}
+			#return-btn{
+			    position: absolute;
+				top: 550px;
+				right: 20px;
+				font-family: 'Augusta';
+				cursor: pointer;
+				color: gold;
+				font-size: 50px;
+			}
+			#Credits-btn{
+			    position: absolute;
+				top: 550px;
+				left: 20px;
+				font-family: 'Augusta';
+				cursor: pointer;
+				color: gold;
+				font-size: 50px;
+			}
+			#info{
+			font-family: 'Augusta';
+			color:gold;
+			font-size: 30px;
+			}
 		</style>
-		
 		<div id='main-menu' class='screen'>
-			<h1>Arena Online</h1>
-			<button onclick='handler.joinGame()'>Play</button>
+			<img src= Mainmenu.png class='background' />
+			<br></br>
+			<br></br>
+			<br></br>
+			<div id="play" onclick='handler.joinGame()'>Play</div>
+			<div id="info-btn" onclick='showInfo()'>Info</div>
+		</div>
+		<div id='info' class='screen hidden'>
+			<img src= InfoPagev1-0.png class='background' />
+			<center>
+			<img src='info-f.gif' id='gif-thing' />
+			<h1>Controls</h1>
+			<h3>[W]     move up<h3>
+			<h3>[A]     move left<h3>
+			<h3>[S]     move down<h3>
+			<h3>[D]     move right<h3>
+			<h3>[SPACE]     Attack<h3>
+			</center>
+			<script>
+			document.onkeydown = checkKey;
+
+			function checkKey(e) {
+	
+				var gif = document.getElementById('gif-thing');
+				
+				e = e || window.event;
+				// W-key
+				if (e.keyCode == '87') {
+					gif.src = 'info-f.gif';
+				}
+				// A-key
+				else if (e.keyCode == '65') {
+					gif.src = 'info-l.gif';
+				}
+				// S-key
+				else if (e.keyCode == '37') {
+					gif.src = 'info-d.gif';
+				}
+				// D-key
+				else if (e.keyCode == '39') {
+					gif.src = 'info-r.gif';
+				}
+	
+			}
+			</script>
+			<div id="return-btn" onclick='hideInfo()'>Return</div>
+			<a id="Credits-btn" href = "Credits.html">Credits</a>
+		</div>
+		<div id='Credits' class='screen hidden'>
+		
 		</div>
 		<div id='waiting-room' class='screen hidden'>
 			<p>Waiting for players...</p>
+			<img src= MainmenuMEME.png class='background' />
 		</div>
 		<div id='game' class='screen hidden'>
 			<canvas id='game-canvas' class='screen'>Sorry, but your browser is too outdated to run this game. Please consider updating your browser, or getting Google Chrome or Mozilla Firefox if you are using Internet Explorer.</canvas>
 		</div>
-
+		
 		<script src='/socket.io/socket.io.js'></script>
 		<script src='zlib.js'></script>
 		<script src='engine.js'></script>
@@ -35,5 +144,19 @@
 		<script src='render.js'></script>
 		<script src='client.js'></script>
 		<script src='main.js'></script>
+		<script>
+			function showInfo(){
+				dom.hide('main-menu');
+				dom.show('info');
+			}
+			function hideInfo(){
+				dom.show('main-menu');
+				dom.hide('info');
+			}
+			function showCredits(){
+				dom.hide('info');
+				dom.show('Credits');
+			}
+		</script>
 	</body>
 </html>
