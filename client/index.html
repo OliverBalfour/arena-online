@@ -70,11 +70,19 @@
 				color: gold;
 				font-size: 50px;
 			}
+			#gif-thing{
+			    position: absolute;
+				top: 250px;
+				left: 900px;
+				height: 112.5px;
+				width: 75px;
+			}
 			#info{
 			font-family: 'Augusta';
 			color:gold;
 			font-size: 30px;
 			}
+			#
 		</style>
 		<div id='main-menu' class='screen'>
 			<img src= Mainmenu.png class='background' />
@@ -87,7 +95,7 @@
 		<div id='info' class='screen hidden'>
 			<img src= InfoPagev1-0.png class='background' />
 			<center>
-			<img src='info-f.gif' id='gif-thing' />
+			<img src='move-u.png' id='gif-thing' />
 			<h1>Controls</h1>
 			<h3>[W]     move up<h3>
 			<h3>[A]     move left<h3>
@@ -100,24 +108,24 @@
 
 			function checkKey(e) {
 	
-				var gif = document.getElementById('gif-thing');
+				var img = document.getElementById('gif-thing');
 				
 				e = e || window.event;
 				// W-key
 				if (e.keyCode == '87') {
-					gif.src = 'info-f.gif';
+					img.src = 'move-u.png';
 				}
 				// A-key
 				else if (e.keyCode == '65') {
-					gif.src = 'info-l.gif';
+					img.src = 'move-l.png';
 				}
 				// S-key
-				else if (e.keyCode == '37') {
-					gif.src = 'info-d.gif';
+				else if (e.keyCode == '83') {
+					img.src = 'move-d.png';
 				}
 				// D-key
-				else if (e.keyCode == '39') {
-					gif.src = 'info-r.gif';
+				else if (e.keyCode == '68') {
+					img.src = 'move-r.png';
 				}
 	
 			}
