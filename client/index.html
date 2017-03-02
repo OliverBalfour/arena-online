@@ -77,7 +77,7 @@
 			}
 		</style>
 		<div id='main-menu' class='screen'>
-			<img src= Mainmenu.png class='background' />
+			<img src='images/mainmenu.png' class='background' />
 			<br></br>
 			<br></br>
 			<br></br>
@@ -85,9 +85,9 @@
 			<div id="info-btn" onclick='showInfo()'>Info</div>
 		</div>
 		<div id='info' class='screen hidden'>
-			<img src= InfoPagev1-0.png class='background' />
+			<img src='images/InfoPagev1-0.png' class='background' />
 			<center>
-			<img src='info-f.gif' id='gif-thing' />
+			<img src='images/info-f.gif' id='gif-thing' />
 			<h1>Controls</h1>
 			<h3>[W]     move up<h3>
 			<h3>[A]     move left<h3>
@@ -105,32 +105,32 @@
 				e = e || window.event;
 				// W-key
 				if (e.keyCode == '87') {
-					gif.src = 'info-f.gif';
+					gif.src = 'images/info-f.gif';
 				}
 				// A-key
 				else if (e.keyCode == '65') {
-					gif.src = 'info-l.gif';
+					gif.src = 'images/info-l.gif';
 				}
 				// S-key
 				else if (e.keyCode == '37') {
-					gif.src = 'info-d.gif';
+					gif.src = 'images/info-d.gif';
 				}
 				// D-key
 				else if (e.keyCode == '39') {
-					gif.src = 'info-r.gif';
+					gif.src = 'images/info-r.gif';
 				}
 	
 			}
 			</script>
 			<div id="return-btn" onclick='hideInfo()'>Return</div>
-			<a id="Credits-btn" href = "Credits.html">Credits</a>
+			<a id="credits-btn" href="credits.html">Credits</a>
 		</div>
-		<div id='Credits' class='screen hidden'>
+		<div id='credits' class='screen hidden'>
 		
 		</div>
 		<div id='waiting-room' class='screen hidden'>
 			<p>Waiting for players...</p>
-			<img src= MainmenuMEME.png class='background' />
+			<img src='images/mmmeme.png' class='background' />
 		</div>
 		<div id='game' class='screen hidden'>
 			<canvas id='game-canvas' class='screen'>Sorry, but your browser is too outdated to run this game. Please consider updating your browser, or getting Google Chrome or Mozilla Firefox if you are using Internet Explorer.</canvas>
@@ -155,7 +155,7 @@
 			}
 			function showCredits(){
 				dom.hide('info');
-				dom.show('Credits');
+				dom.show('credits');
 			}
 		</script>
 	</body>

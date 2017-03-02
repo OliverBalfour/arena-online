@@ -45,7 +45,7 @@ var handler = {
 		}
 
 		//Load spritesheets
-		Engine.resource.loadImages(state.players.map(function(p){return 'textures/' + p.texture + '.png'}), function(spritesheets){
+		Engine.resource.loadImages(state.players.map(function(p){return 'sprites/' + p.texture + '.png'}), function(spritesheets){
 			for(var i = 0; i < spritesheets.length; i++){
 				state.players[i].spritesheet = spritesheets[i];
 				
@@ -79,6 +79,9 @@ var handler = {
 			}
 			p.lerp();
 		}
+	},
+	dead: function(id){
+		console.log(id + ' died lol xD');
 	}
 }
 
@@ -92,6 +95,7 @@ var state = {
 socket.on('game-start', handler.startGame.bind(handler));
 socket.on('connected', handler.connect.bind(handler));
 socket.on('game-update', handler.update.bind(handler));
+socket.on('dead', handler.dead.bind(handler));
 
 var dom = {
 	id: function(s){ return document.getElementById(s); },

@@ -91,9 +91,17 @@ module.exports = class GameRoom {
 			ent.checkCollision();
 		}
 
-		for(let socket of this.players){
-			let player = socket.player;
+		for(let i = 0; i < this.players.length; i++){
+			let player = this.players[i].player;
 			if(!player) continue;
+
+			//Handle dead players from the last iteration
+			if(player.dead){
+				this.io.emit('dead', player.id);
+				console.log(player.id + ' died');
+				//This will cause one player to miss an update for one iteration but idc its one update lol
+				this.players.splice(i, 1);
+			}
 
 			for(let input of player.input){
 				let update = player.safeInput(input);
@@ -117,14 +125,16 @@ module.exports = class GameRoom {
 					player.direction = update.dir;
 				}else if(input.type === 'at'){
 					player.action = 'slash';
-				}else if(input.type === 'at'){
+				}else if(input.type === 'sat'){
 					player.action = 'walk';
 				}
 			}
 
 			player.input = [];
 			player.handleTileCollision();
+			player.handleAttack(this.players);
 		}
+
 	}
 
 	updateLoop () {
