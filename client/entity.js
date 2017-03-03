@@ -31,6 +31,7 @@ Engine.entity.Empty = function(){
 	this.direction = 0;
 	this.action = 'idle';
 	this.frame = 0;
+	this.health = 0;
 	Engine.entity.entities.push(this);
 }
 
@@ -94,7 +95,7 @@ Engine.entity.Player = function(){
 	Engine.entity.Empty.call(this);
 	this.draw = Engine.entity.playerDraw;
 	this.dead = false;
-	this.setHealth(120);
+	this.setHealth(50);
 	this.spritesheet = null;
 }
 Engine.entity.Player.prototype = Object.create(Engine.entity.Empty.prototype);
@@ -139,6 +140,12 @@ Engine.entity.playerDraw = function(){
 			64, 64,
 			Engine.client.baseX + this.pos.x - 32, Engine.client.baseY + this.pos.y - 56,
 			64, 64
+		);
+
+		Engine.render.game.fillStyle = 'red';
+		Engine.render.game.fillRect(
+			Engine.client.baseX + this.pos.x - 32, Engine.client.baseY + this.pos.y - 64,
+			this.stats.health / this.stats.maxHealth * 64, 4
 		);
 
 		if(this.action !== 'idle'){

@@ -30,7 +30,9 @@ const tree = {};
 tree.waitingRoom = new WaitingRoom(tree, io, {maxPlayers: 2});
 tree.gameRooms = [];
 tree.getGame = id => tree.gameRooms.filter(rm => rm.id === id)[0];
-
+tree.delGame = id => {tree.gameRooms.splice(
+	tree.gameRooms.indexOf(tree.gameRooms.filter(rm => rm.id === id)[0]), 1
+)};
 
 /* WebSockets (socket.io) */
 

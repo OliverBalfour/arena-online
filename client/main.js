@@ -41,6 +41,7 @@ var handler = {
 				p.pid = state.players[i].id;
 				p.pos.x = state.players[i].x;
 				p.pos.y = state.players[i].y;
+				p.stats.maxHealth = p.stats.health = state.players[i].health;
 			}
 		}
 
@@ -77,12 +78,19 @@ var handler = {
 				if(p.direction === 0) p.direction = 2;
 				else if(p.direction === 2) p.direction = 0;
 			}
+			p.stats.health = state.players[i].health;
 			p.lerp();
 		}
 	},
 	dead: function(id){
-		console.log(id + ' died lol xD');
-	}
+		if(state.id === id){
+			alert('You lose!');
+		}
+	},
+	win: function(){
+		alert('You won!');
+	},
+	attack: function(id){}
 }
 
 var state = {
@@ -92,10 +100,12 @@ var state = {
 	}
 };
 
-socket.on('game-start', handler.startGame.bind(handler));
+socket.on('gs', handler.startGame.bind(handler));
 socket.on('connected', handler.connect.bind(handler));
-socket.on('game-update', handler.update.bind(handler));
+socket.on('gu', handler.update.bind(handler));
 socket.on('dead', handler.dead.bind(handler));
+socket.on('win', handler.win.bind(handler));
+socket.on('atk', handler.attack.bind(handler));
 
 var dom = {
 	id: function(s){ return document.getElementById(s); },

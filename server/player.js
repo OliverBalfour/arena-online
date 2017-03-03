@@ -82,24 +82,6 @@ module.exports = class Player {
 			this.handleTileSideCollision(i);
 	}
 
-	//If the player is attacking, this deals damage to the other player etc.
-	handleAttack (players) {
-		for(let socket of players){
-			let player = socket.player;
-			
-			if(this.id === player.id || player.action !== 'slash'){
-				continue;
-			}
-
-			if(Math.hypot(player.x - this.x, player.y - this.y) < 100){
-				player.health -= Math.floor(Math.random() * (8 - 5)) + 5;
-				if(player.health <= 0){
-					player.die();
-				}
-			}
-		}
-	}
-
 	//blarg im ded: https://c1.staticflickr.com/4/3627/3457088327_4544ea0fae.jpg
 	die () {
 		//Reset health to quash any graphics bugs or whateves
