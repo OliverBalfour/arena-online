@@ -48,6 +48,7 @@ module.exports = class GameRoom {
 		this.id = UUID();
 		this.tree = tree;
 		this.io = io;
+		//Note: populated with sockets; so use this.players[n].player to get the Player()
 		this.players = players || [];
 
 		this.entities = [];
@@ -58,7 +59,7 @@ module.exports = class GameRoom {
 			socket.player = new Player(socket.id, spwn.x, spwn.y);
 		}
 
-		this.io.to(this.id).emit('game-start', this.safePlayers());
+		this.io.to(this.id).emit('gs', this.safePlayers());
 		console.log('New game started: ' + this.id);
 
 		this.physicsLoopInterval = setInterval(this.physicsLoop.bind(this), 15);
@@ -79,6 +80,18 @@ module.exports = class GameRoom {
 		return this.players.filter(p => p !== exception).map(socket => socket.player);
 	}
 
+	minPlayers () {
+		return this.players.map(socket => { return {
+			x: socket.player.x,
+			y: socket.player.y,
+			id: socket.player.id,
+			action: socket.player.action,
+			frame: socket.player.frame,
+			direction: socket.player.direction,
+			health: socket.player.health,
+		}});
+	}
+
 	physicsLoop () {
 
 		this.prevLoopTime = this.loopTime;
@@ -91,9 +104,18 @@ module.exports = class GameRoom {
 			ent.checkCollision();
 		}
 
-		for(let socket of this.players){
-			let player = socket.player;
+		for(let i = 0; i < this.players.length; i++){
+			let player = this.players[i].player;
 			if(!player) continue;
+
+			//Handle dead players from the last iteration
+			if(player.dead){
+				this.io.to(this.id).emit('dead', player.id);
+				console.log(player.id + ' died');
+				//This will cause one player to miss an update for one iteration but idc its one update lol
+				this.players.splice(i, 1);
+				this.checkForWin();
+			}
 
 			for(let input of player.input){
 				let update = player.safeInput(input);
@@ -117,18 +139,42 @@ module.exports = class GameRoom {
 					player.direction = update.dir;
 				}else if(input.type === 'at'){
 					player.action = 'slash';
-				}else if(input.type === 'at'){
+				}else if(input.type === 'sat'){
 					player.action = 'walk';
 				}
 			}
 
 			player.input = [];
 			player.handleTileCollision();
+
+			if(player.action === 'slash'){
+				for(let p2 of this.players){
+					p2 = p2.player;
+					if(player === p2) continue;
+					if(Math.hypot(player.x - p2.x, player.y - p2.y) < 20){
+						p2.health -= this.delta * (Math.floor(Math.random() * (8 - 5)) + 5);
+						if(p2.health <= 0){
+							p2.die();
+						}
+						this.io.to(this.id).emit('atk', p2.id);
+					}
+				}
+			}
+
 		}
+
 	}
 
 	updateLoop () {
-		this.io.to(this.id).emit('game-update', this.safePlayers());
+		this.io.to(this.id).emit('gu', this.minPlayers());
+	}
+
+	checkForWin () {
+		if(this.players.length === 1){
+			this.io.to(this.id).emit('win');
+			console.log('Game won by ' + this.players[0].player.id);
+			this.tree.delGame(this.id);
+		}
 	}
 
 }

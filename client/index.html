@@ -43,7 +43,7 @@
 				/* Insert a image change to the play button */
 				
 			}
-			#info-btn{
+			#move-btn{
 			    position: absolute;
 				top: 550px;
 				right: 20px;
@@ -61,7 +61,7 @@
 				color: gold;
 				font-size: 50px;
 			}
-			#Credits-btn{
+			#credits-btn{
 			    position: absolute;
 				top: 550px;
 				left: 20px;
@@ -70,32 +70,35 @@
 				color: gold;
 				font-size: 50px;
 			}
-			#gif-thing{
-			    position: absolute;
+			#info{
+				font-family: 'Augusta';
+				color:gold;
+				font-size: 30px;
+			}
+			#img-thing{
+				position: absolute;
 				top: 250px;
 				left: 900px;
 				height: 112.5px;
 				width: 75px;
 			}
-			#info{
-			font-family: 'Augusta';
-			color:gold;
-			font-size: 30px;
-			}
-			#
 		</style>
 		<div id='main-menu' class='screen'>
+<<<<<<< HEAD
 			<img src= MainMenu.png class='background' />
+=======
+			<img src='images/mainmenu.png' class='background' />
+>>>>>>> 6d8b8346ddcc489e33c7d0a90db2d96a67b67709
 			<br></br>
 			<br></br>
 			<br></br>
 			<div id="play" onclick='handler.joinGame()'>Play</div>
-			<div id="info-btn" onclick='showInfo()'>Info</div>
+			<div id="move-btn" onclick='showInfo()'>Info</div>
 		</div>
 		<div id='info' class='screen hidden'>
-			<img src= InfoPagev1-0.png class='background' />
+			<img src='images/InfoPagev1-0.png' class='background' />
 			<center>
-			<img src='move-u.png' id='gif-thing' />
+			<img src='images/move-u.png' id='img-thing' />
 			<h1>Controls</h1>
 			<h3>[W]     move up<h3>
 			<h3>[A]     move left<h3>
@@ -108,37 +111,45 @@
 
 			function checkKey(e) {
 	
-				var img = document.getElementById('gif-thing');
+				var img = document.getElementById('img-thing');
 				
 				e = e || window.event;
 				// W-key
 				if (e.keyCode == '87') {
-					img.src = 'move-u.png';
+					img.src = 'images/move-u.png';
 				}
 				// A-key
 				else if (e.keyCode == '65') {
-					img.src = 'move-l.png';
+					img.src = 'images/move-l.png';
 				}
 				// S-key
 				else if (e.keyCode == '83') {
-					img.src = 'move-d.png';
+					img.src = 'images/move-d.png';
 				}
 				// D-key
 				else if (e.keyCode == '68') {
-					img.src = 'move-r.png';
+					img.src = 'images/move-r.png';
 				}
 	
 			}
 			</script>
 			<div id="return-btn" onclick='hideInfo()'>Return</div>
+<<<<<<< HEAD
 			<a id="Credits-btn" href = "credits.html">credits</a>
+=======
+			<a id="credits-btn" href="credits.html">Credits</a>
+>>>>>>> 6d8b8346ddcc489e33c7d0a90db2d96a67b67709
 		</div>
-		<div id='Credits' class='screen hidden'>
+		<div id='credits' class='screen hidden'>
 		
 		</div>
 		<div id='waiting-room' class='screen hidden'>
 			<p>Waiting for players...</p>
+<<<<<<< HEAD
 			<img src= MainMenuMEME.png class='background' />
+=======
+			<img src='images/mmmeme.png' class='background' />
+>>>>>>> 6d8b8346ddcc489e33c7d0a90db2d96a67b67709
 		</div>
 		<div id='game' class='screen hidden'>
 			<canvas id='game-canvas' class='screen'>Sorry, but your browser is too outdated to run this game. Please consider updating your browser, or getting Google Chrome or Mozilla Firefox if you are using Internet Explorer.</canvas>
@@ -163,7 +174,7 @@
 			}
 			function showCredits(){
 				dom.hide('info');
-				dom.show('Credits');
+				dom.show('credits');
 			}
 		</script>
 	</body>

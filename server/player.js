@@ -30,8 +30,9 @@ module.exports = class Player {
 		this.action = 'walk';
 		//Frame in whatever animation cycle the player is doing
 		this.frame = 0;
-		//duh
 		this.direction = 0;
+		this.health = 50;
+		this.dead = false;
 	}
 
 	safeInput (input) {
@@ -79,6 +80,14 @@ module.exports = class Player {
 	handleTileCollision () {
 		for(let i of [0,1,2,3])
 			this.handleTileSideCollision(i);
+	}
+
+	//blarg im ded: https://c1.staticflickr.com/4/3627/3457088327_4544ea0fae.jpg
+	die () {
+		//Reset health to quash any graphics bugs or whateves
+		this.health = 0;
+		//In the next update loop this gets handled by the game room
+		this.dead = true;
 	}
 
 }

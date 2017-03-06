@@ -21,7 +21,7 @@ module.exports = class WaitingRoom {
 	}
 
 	remove (player) {
-		if(this.players.indexOf(player))
+		if(this.players.indexOf(player) !== -1)
 			this.players.splice(this.players.indexOf(player), 1);
 	}
 

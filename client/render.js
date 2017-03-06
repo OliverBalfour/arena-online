@@ -278,12 +278,6 @@ Engine.render.loop = function(){
 		
 		//increment frame counter
 		Engine.render.frames ++;
-		
-		//if space is down, attack
-		if(Engine.client.keys[32]){
-			//Engine.client.player.attack();
-		}
-		
 	}
 	
 }
